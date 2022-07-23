@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBooking.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBooking.DepedencyInjection", "AddressBooking.DepedencyInjection\AddressBooking.DepedencyInjection.csproj", "{96DC46AB-38E7-48EA-A1A6-FA64E76B9EE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBooking.Api", "AddressBooking.Api\AddressBooking.Api.csproj", "{3564A861-D465-4C79-8F07-119F1F86D44A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBooking.Api", "AddressBooking.Api\AddressBooking.Api.csproj", "{3564A861-D465-4C79-8F07-119F1F86D44A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

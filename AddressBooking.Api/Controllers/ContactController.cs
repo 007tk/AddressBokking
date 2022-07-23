@@ -36,7 +36,8 @@ namespace AddressBooking.Api.Controllers
         [Route(nameof(GetContacts))]
         public async Task<IEnumerable<ContactDto>> GetContacts(CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            var contacts = await _contactService.GetContactsAsync(cancellationToken);
+            return contacts;
         }
 
         [HttpPost]
