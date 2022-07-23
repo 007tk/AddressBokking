@@ -1,4 +1,5 @@
 ﻿using AddressBooking.Core;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,19 @@ namespace AddressBooking.Application
     public class ContactService : IContactService
     {
         private readonly IContactRepository _contactRepository;
-        public ContactService(IContactRepository contactRepository)
+        private readonly IMapper _mapper; 
+        public ContactService(IContactRepository contactRepository, IMapper mapper)
         {
             _contactRepository = contactRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<ContactDto>> GetContactsAsync(CancellationToken cancellationToken)
+        {
+            var entities = await _contactRepository.FindAllAsync(cancellationToken);
+            var returnDto = _mapper.Map<List<ContactDto>>(entities);
+
+            return returnDto;
         }
     }
 }

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AddressBooking.Core;
+using AutoMapper;
 
 namespace AddressBooking.Application
 {
-    internal class MappingProfile
+    public class MappingProfile : Profile
     {
+        public MappingProfile()
+        {
+            CreateMap<ContactDto, Contact>().ReverseMap();
+        }
     }
 }
