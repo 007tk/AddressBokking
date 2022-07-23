@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AddressBooking.DepedencyInjection\AddressBooking.DepedencyInjection.csproj" />
     <ProjectReference Include="..\AddressBooking.Infrastructure\AddressBooking.Infrastructure.csproj" />
   </ItemGroup>
 

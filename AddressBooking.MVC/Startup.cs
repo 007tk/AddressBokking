@@ -1,3 +1,4 @@
+using AddressBooking.DepedencyInjection;
 using AddressBooking.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,8 @@ namespace AddressBooking.MVC
             {
                 options.UseSqlServer(Configuration.GetConnectionString("AddressDbConnection"));
             });
+
+            UseAddressBookingServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +63,11 @@ namespace AddressBooking.MVC
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private static void UseAddressBookingServices(IServiceCollection services)
+        {
+            DependencyContainer.AddAddressBookingsServices(services);
         }
     }
 }

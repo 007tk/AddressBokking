@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBooking.MVC", "Addre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBooking.Application", "AddressBooking.Application\AddressBooking.Application.csproj", "{46DBC4C2-2748-4370-A385-6CADB6E74566}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBooking.DepedencyInjection", "AddressBooking.DepedencyInjection\AddressBooking.DepedencyInjection.csproj", "{96DC46AB-38E7-48EA-A1A6-FA64E76B9EE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{46DBC4C2-2748-4370-A385-6CADB6E74566}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46DBC4C2-2748-4370-A385-6CADB6E74566}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46DBC4C2-2748-4370-A385-6CADB6E74566}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96DC46AB-38E7-48EA-A1A6-FA64E76B9EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96DC46AB-38E7-48EA-A1A6-FA64E76B9EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96DC46AB-38E7-48EA-A1A6-FA64E76B9EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96DC46AB-38E7-48EA-A1A6-FA64E76B9EE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{A767E506-8894-43F7-993C-1AFB13E82514} = {D6D623D3-AB92-4530-A819-19DB11D2B45D}
 		{82EFB156-D0DD-4B11-A63F-2AD23412E774} = {4F6BFEE3-D392-4671-BDDB-F692DB65C248}
 		{46DBC4C2-2748-4370-A385-6CADB6E74566} = {CA8824C2-1F04-4A09-9099-1177D601F57C}
+		{96DC46AB-38E7-48EA-A1A6-FA64E76B9EE6} = {D6D623D3-AB92-4530-A819-19DB11D2B45D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6360377-7A1D-41C1-A99A-9E200879ED24}
