@@ -16,9 +16,12 @@ namespace AddressBooking.DepedencyInjection
         {
             // [Application Layer]
             services.AddScoped<IContactService, ContactService>();
+            services.AddAutoMapper(typeof(MappingProfile));
 
             // [Infrastructure Layer]
             services.AddScoped<IContactRepository, ContactRepository>();
+
+
         }
     }
 }
