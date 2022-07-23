@@ -1,7 +1,7 @@
-﻿using AddressBooking.Core.Model;
+﻿using AddressBooking.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace AddressBooking.Infrastructure.Context 
+namespace AddressBooking.Infrastructure
 {
     public class AddressBookingDbContext : DbContext
     {
