@@ -1,3 +1,7 @@
 ﻿# HOW TO RUN MIGRAIONS 
-***************AddressBookingContext**********
- add-migration "XXXXXXXXX" -Context AddressBookingDbContext
+*******************AddressBookingContext******************
+# Add Migration: 
+add-migration "XXXXXXXXX" -Context AddressBookingDbContext
+# Update Migration:
+update-migration -Context AddessBookingContext
+**********************************************************
