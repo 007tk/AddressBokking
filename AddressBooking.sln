@@ -11,9 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Core", "4. Core", "{9680
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation", "1. Presentation", "{4F6BFEE3-D392-4671-BDDB-F692DB65C248}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBooking.MVC", "AddressBooking.MVC\AddressBooking.MVC.csproj", "{E6480DB5-D994-46FB-9152-26D2CD8BD214}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBooking.Core", "AddressBooking.Core\AddressBooking.Core.csproj", "{56FBFAFD-F4B9-4FE3-A70E-CC16ADF06561}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBooking.Core", "AddressBooking.Core\AddressBooking.Core.csproj", "{56FBFAFD-F4B9-4FE3-A70E-CC16ADF06561}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Infrastructure", "5. Infrastructure", "{D6D623D3-AB92-4530-A819-19DB11D2B45D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBooking.Infrastructure", "AddressBooking.Infrastructure\AddressBooking.Infrastructure.csproj", "{A767E506-8894-43F7-993C-1AFB13E82514}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBooking.MVC", "AddressBooking.MVC\AddressBooking.MVC.csproj", "{82EFB156-D0DD-4B11-A63F-2AD23412E774}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,21 +25,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E6480DB5-D994-46FB-9152-26D2CD8BD214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6480DB5-D994-46FB-9152-26D2CD8BD214}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6480DB5-D994-46FB-9152-26D2CD8BD214}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6480DB5-D994-46FB-9152-26D2CD8BD214}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56FBFAFD-F4B9-4FE3-A70E-CC16ADF06561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56FBFAFD-F4B9-4FE3-A70E-CC16ADF06561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56FBFAFD-F4B9-4FE3-A70E-CC16ADF06561}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56FBFAFD-F4B9-4FE3-A70E-CC16ADF06561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A767E506-8894-43F7-993C-1AFB13E82514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A767E506-8894-43F7-993C-1AFB13E82514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A767E506-8894-43F7-993C-1AFB13E82514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A767E506-8894-43F7-993C-1AFB13E82514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82EFB156-D0DD-4B11-A63F-2AD23412E774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82EFB156-D0DD-4B11-A63F-2AD23412E774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82EFB156-D0DD-4B11-A63F-2AD23412E774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82EFB156-D0DD-4B11-A63F-2AD23412E774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E6480DB5-D994-46FB-9152-26D2CD8BD214} = {4F6BFEE3-D392-4671-BDDB-F692DB65C248}
 		{56FBFAFD-F4B9-4FE3-A70E-CC16ADF06561} = {9680EC23-7D14-4637-9E14-86B5FDCFD919}
+		{A767E506-8894-43F7-993C-1AFB13E82514} = {D6D623D3-AB92-4530-A819-19DB11D2B45D}
+		{82EFB156-D0DD-4B11-A63F-2AD23412E774} = {4F6BFEE3-D392-4671-BDDB-F692DB65C248}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6360377-7A1D-41C1-A99A-9E200879ED24}
