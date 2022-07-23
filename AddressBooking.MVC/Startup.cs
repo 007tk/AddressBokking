@@ -28,13 +28,7 @@ namespace AddressBooking.MVC
         {
             services.AddControllersWithViews();
 
-            // Add Address booking Db connection.
-            services.AddDbContext<AddressBookingDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("AddressDbConnection"));
-            });
-
-            UseAddressBookingServices(services);
+            UseAddressBookingServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,9 +59,9 @@ namespace AddressBooking.MVC
             });
         }
 
-        private static void UseAddressBookingServices(IServiceCollection services)
+        private static void UseAddressBookingServices(IServiceCollection services, IConfiguration configuration)
         {
-            DependencyContainer.AddAddressBookingsServices(services);
+            DependencyContainer.AddAddressBookingsServices(services, configuration);
         }
     }
 }

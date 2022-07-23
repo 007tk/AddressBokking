@@ -31,12 +31,6 @@ namespace AddressBooking.Api
         {
             services.AddControllers();
 
-            // Add Address booking Db connection.
-            services.AddDbContext<AddressBookingDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("AddressDbConnection"));
-            });
-
             // Register the Swagger or more Swagger documents
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -47,7 +41,7 @@ namespace AddressBooking.Api
             });
             services.AddControllers();
 
-            UseAddressBookingServices(services);
+            UseAddressBookingServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,9 +69,9 @@ namespace AddressBooking.Api
             });
         }
 
-        private static void UseAddressBookingServices(IServiceCollection services)
+        private static void UseAddressBookingServices(IServiceCollection services, IConfiguration configuration)
         {
-            DependencyContainer.AddAddressBookingsServices(services);
+            DependencyContainer.AddAddressBookingsServices(services, configuration);
         }
     }
 }

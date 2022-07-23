@@ -1,6 +1,9 @@
 ﻿using AddressBooking.Application;
 using AddressBooking.Core;
+using AddressBooking.Infrastructure;
 using AddressBooking.Infrastructure.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,7 +15,7 @@ namespace AddressBooking.DepedencyInjection
 {
     public class DependencyContainer
     {
-        public static void AddAddressBookingsServices(IServiceCollection services)
+        public static void AddAddressBookingsServices(IServiceCollection services, IConfiguration configuration)
         {
             // [Application Layer]
             services.AddScoped<IContactService, ContactService>();
@@ -21,6 +24,11 @@ namespace AddressBooking.DepedencyInjection
             // [Infrastructure Layer]
             services.AddScoped<IContactRepository, ContactRepository>();
 
+            // [AddressBookingDbContext]
+            services.AddDbContext<AddressBookingDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("AddressDbConnection"));
+            });
 
         }
     }
