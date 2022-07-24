@@ -1,5 +1,5 @@
-﻿@using AddressBooking.Application
-@model ContactDto
+﻿@using AddressBooking.Presentation.Models
+@model Contact
 @{
 }
 <!-- Modal -->
@@ -13,10 +13,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="AddContact" method="post">
+                <form method="post">
                     <div class="form-group">
                         <label asp-for="ContactName"></label>
                         <input type="email" class="form-control" asp-for="ContactName" placeholder="Enter contact name">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactSurname"></label>
+                        <input type="email" class="form-control" asp-for="ContactSurname" placeholder="Enter contact surname">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
