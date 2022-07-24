@@ -1,8 +1,10 @@
 using AddressBooking.DepedencyInjection;
 using AddressBooking.Infrastructure;
+using AddressBooking.MVC.Areas;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,12 @@ namespace AddressBooking.MVC
             services.AddControllersWithViews();
 
             UseAddressBookingServices(services, Configuration);
+
+            // Add custom view locations
+            services.Configure<RazorViewEngineOptions>(options =>
+            {
+                options.ViewLocationExpanders.Add(new MyViewLocationExpander());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
