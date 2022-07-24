@@ -16,4 +16,8 @@
     <ProjectReference Include="..\AddressBooking.Infrastructure\AddressBooking.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Contacts\Views\" />
+  </ItemGroup>
+
 </Project>

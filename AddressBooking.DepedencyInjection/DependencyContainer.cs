@@ -22,14 +22,12 @@ namespace AddressBooking.DepedencyInjection
             services.AddAutoMapper(typeof(MappingProfile));
 
             // [Infrastructure Layer]
-            services.AddScoped<IContactRepository, ContactRepository>();
-
-            // [AddressBookingDbContext]
             services.AddDbContext<AddressBookingDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("AddressDbConnection"));
             });
 
+            services.AddScoped<IContactRepository, ContactRepository>();
         }
     }
 }

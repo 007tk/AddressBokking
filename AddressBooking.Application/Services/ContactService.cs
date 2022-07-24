@@ -21,9 +21,9 @@ namespace AddressBooking.Application
         public async Task<IEnumerable<ContactDto>> GetContactsAsync(CancellationToken cancellationToken)
         {
             var entities = await _contactRepository.FindAllAsync(cancellationToken);
-            var returnDto = _mapper.Map<List<ContactDto>>(entities);
+            var contacts = _mapper.Map<List<ContactDto>>(entities);
 
-            return returnDto;
+            return contacts;
         }
     }
 }
