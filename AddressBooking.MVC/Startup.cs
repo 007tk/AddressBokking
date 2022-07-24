@@ -37,6 +37,13 @@ namespace AddressBooking.MVC
             {
                 options.ViewLocationExpanders.Add(new MyViewLocationExpander());
             });
+
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.WithOrigins("https://localhost:44382")
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +61,7 @@ namespace AddressBooking.MVC
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCors("MyPolicy");
             app.UseRouting();
 
             app.UseAuthorization();

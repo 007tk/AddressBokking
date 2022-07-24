@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -15,10 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AddressBooking.DepedencyInjection\AddressBooking.DepedencyInjection.csproj" />
     <ProjectReference Include="..\AddressBooking.Infrastructure\AddressBooking.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\js\contacts-js\" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,30 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
-<div id="contacts">
-
+<h1>Contacts</h1>
+<div class="form-group">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addContactModal">Add Contact</button>
+    <button type="button" class="btn btn-secondary">Upload Contacts</button>
 </div>
+<partial name="_AddContact"></partial>
+<div id="contacts">
+    <table id="contactTable"></table>
+</div>
+<script type="text/javascript">
+    // Load contact data table
+    $('#contactTable').DataTable({
+        ajax: 'https://localhost:44382/api/Contact/GetContacts',
+        dataSrc: 'contact',
+        columns: [
+            { contact: 'id' },
+            { contact: 'contactName' },
+            { contact: 'contactSurname' },
+            { contact: 'email' },
+            { contact: 'contactNumber' }
+        ]
+    });
+
+</script>
+<script src="~/js/contact-js/index.js"></script>
