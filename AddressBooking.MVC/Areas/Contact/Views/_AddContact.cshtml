@@ -13,22 +13,31 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post">
+                <form method="post" id="contactForm">
                     <div class="form-group">
                         <label asp-for="ContactName"></label>
-                        <input type="email" class="form-control" asp-for="ContactName" placeholder="Enter contact name">
+                        <input class="form-control" asp-for="ContactName" placeholder="Enter contact name">
                     </div>
                     <div class="form-group">
                         <label asp-for="ContactSurname"></label>
-                        <input type="email" class="form-control" asp-for="ContactSurname" placeholder="Enter contact surname">
+                        <input class="form-control" asp-for="ContactSurname" placeholder="Enter contact surname">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactNumber"></label>
+                        <input class="form-control" asp-for="ContactNumber" placeholder="Enter contact number">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input class="form-control" asp-for="Email" placeholder="Enter email">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add Contact</button>
+                        <button type="button" class="btn btn-primary" onclick="AddContact()">Add Contact</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="~/js/contact-js/_addContact.js"></script>
 

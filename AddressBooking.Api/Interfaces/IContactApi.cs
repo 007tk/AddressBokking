@@ -1,4 +1,5 @@
 ﻿using AddressBooking.Application;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -10,10 +11,10 @@ namespace AddressBooking.Api.Interfaces
     {
         Task<IEnumerable<ContactDto>> GetContacts(CancellationToken cancellationToken);
 
-        Task<ContactDto> GetContact(int id, CancellationToken cancellationToken);
+        Task<IActionResult> GetContact(int id, CancellationToken cancellationToken);
 
-        Task<bool> AddContact(ContactDto dto, CancellationToken cancellationToken);
+        Task<IActionResult> AddContact(ContactDto dto, CancellationToken cancellationToken);
 
-        Task<bool> UpdateContact(ContactDto dto, CancellationToken cancellationToken);
+        Task<IActionResult> UpdateContact(ContactDto dto, CancellationToken cancellationToken);
     }
 }

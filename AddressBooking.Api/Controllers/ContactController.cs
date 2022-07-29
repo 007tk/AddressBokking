@@ -19,17 +19,27 @@ namespace AddressBooking.Api.Controllers
         }
 
         [HttpPost]
+        [IgnoreAntiforgeryToken]
         [Route(nameof(AddContact))]
-        public async Task<bool> AddContact(ContactDto dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> AddContact([FromForm] ContactDto dto, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await _contactService.InsertContactAsync(dto, cancellationToken);
+
+            return Ok();
         }
 
         [HttpGet]
         [Route(nameof(GetContact))]
-        public async Task<ContactDto> GetContact(int id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetContact(int id, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            var contact = await _contactService.GetContactAsync(id, cancellationToken);
+            if (contact == null)
+                return NotFound();
+
+            return Ok(contact);
         }
 
         [HttpGet]
@@ -42,9 +52,15 @@ namespace AddressBooking.Api.Controllers
 
         [HttpPost]
         [Route(nameof(UpdateContact))]
-        public async Task<bool> UpdateContact(ContactDto dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateContact(ContactDto dto, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var updatedContact = await _contactService.UpdateContactAsync(dto, cancellationToken);
+
+            return Ok(updatedContact);
         }
+
     }
 }

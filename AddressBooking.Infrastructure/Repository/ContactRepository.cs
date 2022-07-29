@@ -17,22 +17,30 @@ namespace AddressBooking.Infrastructure.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Contact>> FindAllAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Contact?>> FindAllAsync(CancellationToken cancellationToken)
         {
             var contacts = await _dbContext.Contacts.ToListAsync(cancellationToken);
             return contacts;
         }
 
-        public async Task<Contact> FindByIdAsync(int id, CancellationToken cancellationToken)
+        public async Task<Contact?> FindByIdAsync(int id, CancellationToken cancellationToken)
         {
             var contact = await _dbContext.Contacts.FirstOrDefaultAsync(cancellationToken);
             return contact;
         }
 
-        public Task UpdateAsync(Contact entity, CancellationToken cancellationToken)
+        public async Task<Contact> InsertAsync(Contact entity, CancellationToken cancellationToken)
+        {
+            var contact = await _dbContext.Contacts.AddAsync(entity, cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+            return contact.Entity;
+        }
+
+        public async Task<bool> UpdateAsync(Contact entity, CancellationToken cancellationToken)
         {
             var entry = _dbContext.Contacts.Update(entity);
-            return Task.CompletedTask;
+            await _dbContext.SaveChangesAsync(cancellationToken);
+            return true;
         }
     }
 }

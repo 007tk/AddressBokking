@@ -30,6 +30,8 @@ namespace AddressBooking.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddControllersWithViews();
+            services.AddAuthorization();
 
             // Register the Swagger or more Swagger documents
             services.AddSwaggerGen(c => {
@@ -39,7 +41,13 @@ namespace AddressBooking.Api
                     Version = "v1"
                 });
             });
-            services.AddControllers();
+
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
 
             UseAddressBookingServices(services, Configuration);
         }
@@ -58,7 +66,7 @@ namespace AddressBooking.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "AddressBooking V1 ");
                     });
             app.UseHttpsRedirection();
-
+            app.UseCors("MyPolicy");
             app.UseRouting();
 
             app.UseAuthorization();

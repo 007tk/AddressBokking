@@ -29,6 +29,7 @@ namespace AddressBooking.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddAuthorization();
 
             UseAddressBookingServices(services, Configuration);
 
@@ -40,7 +41,7 @@ namespace AddressBooking.MVC
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
-                builder.WithOrigins("https://localhost:44382")
+                builder.AllowAnyOrigin()
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
