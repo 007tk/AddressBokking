@@ -3,5 +3,5 @@
 # Add Migration: 
 add-migration "XXXXXXXXX" -Context AddressBookingDbContext
 # Update Migration:
-update-migration -Context AddessBookingContext
+update-database-Context AddressBookingDbContext
 **********************************************************

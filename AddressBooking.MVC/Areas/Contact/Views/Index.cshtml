@@ -6,25 +6,45 @@
 <h1>Contacts</h1>
 <div class="form-group">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addContactModal">Add Contact</button>
-    <button type="button" class="btn btn-secondary">Upload Contacts</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#uploadContactsModal">Upload Contacts</button>
 </div>
-<partial name="_AddContact"></partial>
-<div id="contacts">
-    <table id="contactTable"></table>
-</div>
-<script type="text/javascript">
-    // Load contact data table
-    $('#contactTable').DataTable({
-        ajax: 'https://localhost:44382/api/Contact/GetContacts',
-        dataSrc: 'contact',
-        columns: [
-            { contact: 'id' },
-            { contact: 'contactName' },
-            { contact: 'contactSurname' },
-            { contact: 'email' },
-            { contact: 'contactNumber' }
-        ]
-    });
+<partial name="_AddContact">
+<partial name="_UploadContacts" />
+    <div id="contacts">
+        <table id="contactTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Contact Name</th>
+                    <th>Contact Surname</th>
+                    <th>Email</th>
+                    <th>Contact Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <script type="text/javascript">
 
-</script>
-<script src="~/js/contact-js/index.js"></script>
+        // Load contact data table
+        $('#contactTable').DataTable({
+            ajax: {
+                url: 'https://localhost:44382/api/Contact/GetContacts',
+                dataSrc: '',
+            },
+            columns: [
+                { data: 'id' },
+                { data: 'contactName' },
+                { data: 'contactSurname' },
+                { data: 'email' },
+                { data: 'contactNumber' },
+                {
+                    data: "id",
+                    render: function(data) {
+                        return "<a class='btn btn-primary' href='/Contact/EditContact/" + data + "'>Edit</a> " + "<button class='btn btn-danger' onclick='deleteContact(" + data + ")'>delete</button";
+                    }
+                }
+            ],
+        });
+    </script>
+    <script src="~/js/contact-js/index.js"></script>

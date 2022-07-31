@@ -23,12 +23,24 @@ namespace AddressBooking.Api.Controllers
         [Route(nameof(AddContact))]
         public async Task<IActionResult> AddContact([FromForm] ContactDto dto, CancellationToken cancellationToken)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             await _contactService.InsertContactAsync(dto, cancellationToken);
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route(nameof(DeleteContact))]
+        public async Task<IActionResult> DeleteContact(int id, CancellationToken cancellationToken)
+        {
+            if(id > 0)
+            {
+                await _contactService.DeleteContactAsync(id, cancellationToken);
+                return Ok();
+            }
+            return NotFound();
         }
 
         [HttpGet]

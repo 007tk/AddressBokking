@@ -13,5 +13,7 @@ namespace AddressBooking.Application
         public string ContactSurname { get; set; }
         public string Email { get; set; }
         public int ContactNumber { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

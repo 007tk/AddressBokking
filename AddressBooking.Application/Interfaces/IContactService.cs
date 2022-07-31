@@ -15,5 +15,7 @@ namespace AddressBooking.Application
         Task<bool> InsertContactAsync(ContactDto dto, CancellationToken cancellationToken);
 
         Task<bool> UpdateContactAsync(ContactDto dto, CancellationToken cancellationToken);
+
+        Task<bool> DeleteContactAsync(int id, CancellationToken cancellationToken);
     }
 }

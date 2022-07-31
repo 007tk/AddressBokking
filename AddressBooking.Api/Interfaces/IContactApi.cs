@@ -16,5 +16,6 @@ namespace AddressBooking.Api.Interfaces
         Task<IActionResult> AddContact(ContactDto dto, CancellationToken cancellationToken);
 
         Task<IActionResult> UpdateContact(ContactDto dto, CancellationToken cancellationToken);
+        Task<IActionResult> DeleteContact(int id, CancellationToken cancellationToken);
     }
 }

@@ -25,7 +25,7 @@ namespace AddressBooking.Infrastructure.Repository
 
         public async Task<Contact?> FindByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var contact = await _dbContext.Contacts.FirstOrDefaultAsync(cancellationToken);
+            var contact = await _dbContext.Contacts.FirstOrDefaultAsync(c => c.Id == id,cancellationToken);
             return contact;
         }
 
@@ -39,7 +39,9 @@ namespace AddressBooking.Infrastructure.Repository
         public async Task<bool> UpdateAsync(Contact entity, CancellationToken cancellationToken)
         {
             var entry = _dbContext.Contacts.Update(entity);
+            entry.State = EntityState.Modified;
             await _dbContext.SaveChangesAsync(cancellationToken);
+                
             return true;
         }
     }

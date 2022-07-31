@@ -3,6 +3,7 @@ using AddressBooking.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AddressBooking.Infrastructure.Migrations
 {
     [DbContext(typeof(AddressBookingDbContext))]
-    partial class AddressBookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220731112053_AddIsDeleted")]
+    partial class AddIsDeleted
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +46,7 @@ namespace AddressBooking.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("isDeleted")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");

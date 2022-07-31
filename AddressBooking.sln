@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBooking.Api", "Addre
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Unit Tests", "6. Unit Tests", "{89639840-BF77-4A6C-8F83-CD4BB6FEABE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBooking.Presentation.Models", "AddressBooking.Presentation.Models\AddressBooking.Presentation.Models.csproj", "{5979A336-DADA-4D1D-A8BF-A8CACD1FC8B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBooking.Presentation.Models", "AddressBooking.Presentation.Models\AddressBooking.Presentation.Models.csproj", "{5979A336-DADA-4D1D-A8BF-A8CACD1FC8B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

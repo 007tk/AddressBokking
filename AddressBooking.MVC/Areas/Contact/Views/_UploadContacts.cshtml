@@ -1,7 +1,31 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "_UploadContacts";
 }
-
-<h1>_UploadContacts</h1>
+<!-- Modal -->
+<div class="modal fade" id="uploadContactsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Contacts</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="uploadContactsForm">
+                    <div>
+                        <label for="formFile" class="form-label">Default file input example</label>
+                        <input class="form-control" type="file" id="contactsFile">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="UploadContacts()">Add Contact</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="~/css/contact-css/_uploadContacts.css" />
+<script src="~/js/contact-js/_uploadContacts.js"></script>
 

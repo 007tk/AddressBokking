@@ -36,5 +36,10 @@ namespace AddressBooking.Core
         /// </summary>
         public int ContactNumber { get; set; }
 
+        /// <summary>
+        /// Get & set isDeleted.
+        /// </summary>
+        public bool IsDeleted { get; set; }
+
     }
 }

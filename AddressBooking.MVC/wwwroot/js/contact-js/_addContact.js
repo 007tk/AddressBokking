@@ -9,10 +9,12 @@ function AddContact() {
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         data: form.serialize(),
         success: function (data, textstatus, jqXHR) {
-            //process data
+            console.log(data);
+            $("#addContactModal").hide();
+            location.reload();
         },
         error: function (jqXHR, textstatus, exception) {
-            //process exception
+            console.log(exception);
         }
     });
 }

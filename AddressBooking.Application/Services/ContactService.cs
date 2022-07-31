@@ -18,6 +18,22 @@ namespace AddressBooking.Application
             _mapper = mapper;
         }
 
+        public async Task<bool> DeleteContactAsync(int id, CancellationToken cancellationToken)
+        {
+            if (id > 0)
+            {
+                var entity = await _contactRepository.FindByIdAsync(id, cancellationToken);
+                if(entity != null)
+                {
+                    entity.IsDeleted = true;
+                    await _contactRepository.UpdateAsync(entity, cancellationToken);
+                    return true;
+                }
+               
+            }
+            return false;
+        }
+
         public async Task<ContactDto?> GetContactAsync(int id, CancellationToken cancellationToken)
         {
             var entity = await _contactRepository.FindByIdAsync(id, cancellationToken);
@@ -28,7 +44,8 @@ namespace AddressBooking.Application
         public async Task<IEnumerable<ContactDto>> GetContactsAsync(CancellationToken cancellationToken)
         {
             var entities = await _contactRepository.FindAllAsync(cancellationToken);
-            var contacts = _mapper.Map<List<ContactDto>>(entities);
+            var activeContacts = entities.Where(c => c.IsDeleted == false);
+            var contacts = _mapper.Map<List<ContactDto>>(activeContacts);
 
             return contacts;
         }
