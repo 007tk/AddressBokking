@@ -26,16 +26,16 @@ namespace AddressBooking.Core
         /// </summary>
         public string ContactSurname { get; set; }
 
-        /// <summary>
-        /// Get & set email.
-        /// </summary>
-        public string Email { get; set; }
 
         /// <summary>
-        /// Get & set contact number.
+        /// Get & set Age
         /// </summary>
-        public int ContactNumber { get; set; }
+        public int Age { get; set; }
 
+        /// <summary>
+        /// Get & set date of birth.
+        /// </summary>
+        public DateTime DateOfBirth { get; set; }
         /// <summary>
         /// Get & set isDeleted.
         /// </summary>

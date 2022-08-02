@@ -64,7 +64,7 @@ namespace AddressBooking.Api.Controllers
 
         [HttpPost]
         [Route(nameof(UpdateContact))]
-        public async Task<IActionResult> UpdateContact(ContactDto dto, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateContact([FromForm] ContactDto dto, CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid)
                 return BadRequest();

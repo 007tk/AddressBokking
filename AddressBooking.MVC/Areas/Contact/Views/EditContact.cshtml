@@ -24,9 +24,27 @@
             <input class="form-control" asp-for="Email" placeholder="Enter email">
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            @*<button type="button" class="btn btn-primary" onclick="AddContact()">Add Contact</button>*@
+            <button type="button" class="btn btn-primary" onclick="UpdateContact()">Update Contact</button>
         </div>
     </form>
 </div>
+<script type="text/javascript">
+function UpdateContact() {
+    var form = $("#contactForm");
+    var actionUrl = "https://localhost:44382/api/Contact/UpdateContact";
+
+    $.ajax({
+        url: actionUrl,
+        type: "POST",
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: form.serialize(),
+        success: function (data, textstatus, jqXHR) {
+            console.log(data);
+        },
+        error: function (jqXHR, textstatus, exception) {
+            console.log(exception);
+        }
+    });
+}    
+</script>
 <script src="~/js/contact-js/_editContact.js"></script>

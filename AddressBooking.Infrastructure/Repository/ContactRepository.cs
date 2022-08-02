@@ -39,7 +39,6 @@ namespace AddressBooking.Infrastructure.Repository
         public async Task<bool> UpdateAsync(Contact entity, CancellationToken cancellationToken)
         {
             var entry = _dbContext.Contacts.Update(entity);
-            entry.State = EntityState.Modified;
             await _dbContext.SaveChangesAsync(cancellationToken);
                 
             return true;

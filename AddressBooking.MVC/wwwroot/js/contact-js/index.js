@@ -8,7 +8,7 @@
         success: function (res) {
             console.log(res);
             alert(res);
-            location.reload();
+            $('#contactTable').DataTable().ajax.reload();
         }
     });
 }
