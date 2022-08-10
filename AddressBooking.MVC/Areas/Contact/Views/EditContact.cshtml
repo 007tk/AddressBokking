@@ -7,44 +7,40 @@
 }
 <div class="modal-body">
     <form method="post" id="contactForm">
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="ContactName"></label>
             <input class="form-control" asp-for="ContactName" placeholder="Enter contact name">
+            <span asp-validation-for="ContactName" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="ContactSurname"></label>
             <input class="form-control" asp-for="ContactSurname" placeholder="Enter contact surname">
+            <span asp-validation-for="ContactSurname" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="ContactNumber"></label>
             <input class="form-control" asp-for="ContactNumber" placeholder="Enter contact number">
+            <span asp-validation-for="ContactNumber" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="Email"></label>
-            <input class="form-control" asp-for="Email" placeholder="Enter email">
+        <div class="form-group col-md-6">
+            <label asp-for="Age"></label>
+            <input class="form-control" asp-for="Age" placeholder="Enter age">
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="DateOfBirth"></label>
+            <input class="form-control" asp-for="DateOfBirth" placeholder="Enter date of birth">
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Address"></label>
+            <input class="form-control" asp-for="Address" placeholder="Enter address">
+            <span asp-validation-for="Address" class="text-danger"></span>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="UpdateContact()">Update Contact</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="btnUpdateSubmit">Update Contact</button>
         </div>
     </form>
 </div>
-<script type="text/javascript">
-function UpdateContact() {
-    var form = $("#contactForm");
-    var actionUrl = "https://localhost:44382/api/Contact/UpdateContact";
-
-    $.ajax({
-        url: actionUrl,
-        type: "POST",
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        data: form.serialize(),
-        success: function (data, textstatus, jqXHR) {
-            console.log(data);
-        },
-        error: function (jqXHR, textstatus, exception) {
-            console.log(exception);
-        }
-    });
-}    
-</script>
 <script src="~/js/contact-js/_editContact.js"></script>

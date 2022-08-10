@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AddressBooking.DepedencyInjection\AddressBooking.DepedencyInjection.csproj" />
     <ProjectReference Include="..\AddressBooking.Infrastructure\AddressBooking.Infrastructure.csproj" />
-    <ProjectReference Include="..\AddressBooking.Presentation.Models\AddressBooking.Presentation.Models.csproj" />
   </ItemGroup>
 
 </Project>

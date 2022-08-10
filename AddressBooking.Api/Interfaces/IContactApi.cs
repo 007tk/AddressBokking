@@ -9,13 +9,43 @@ namespace AddressBooking.Api.Interfaces
 {
     public interface IContactApi
     {
+        /// <summary>
+        /// Get contacts.
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         Task<IEnumerable<ContactDto>> GetContacts(CancellationToken cancellationToken);
 
+        /// <summary>
+        /// Get contact.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         Task<IActionResult> GetContact(int id, CancellationToken cancellationToken);
 
+        /// <summary>
+        /// Add contact.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         Task<IActionResult> AddContact(ContactDto dto, CancellationToken cancellationToken);
 
+        /// <summary>
+        /// Update contact.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         Task<IActionResult> UpdateContact(ContactDto dto, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Dlete contact.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         Task<IActionResult> DeleteContact(int id, CancellationToken cancellationToken);
     }
 }

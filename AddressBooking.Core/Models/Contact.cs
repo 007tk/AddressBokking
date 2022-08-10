@@ -36,6 +36,17 @@ namespace AddressBooking.Core
         /// Get & set date of birth.
         /// </summary>
         public DateTime DateOfBirth { get; set; }
+
+        /// <summary>
+        /// Get & set contact number.
+        /// </summary>
+        public string ContactNumber { get; set; }
+
+        /// <summary>
+        /// Get & set address
+        /// </summary>
+        public string Address { get; set; }
+
         /// <summary>
         /// Get & set isDeleted.
         /// </summary>

@@ -11,7 +11,7 @@ namespace AddressBooking.Application
     public class ContactService : IContactService
     {
         private readonly IContactRepository _contactRepository;
-        private readonly IMapper _mapper; 
+        private readonly IMapper _mapper;
         public ContactService(IContactRepository contactRepository, IMapper mapper)
         {
             _contactRepository = contactRepository;
@@ -20,25 +20,29 @@ namespace AddressBooking.Application
 
         public async Task<bool> DeleteContactAsync(int id, CancellationToken cancellationToken)
         {
-            if (id > 0)
+            var entity = id > 0 ? await _contactRepository.FindByIdAsync(id, cancellationToken) : null;
+            if (entity != null)
             {
-                var entity = await _contactRepository.FindByIdAsync(id, cancellationToken);
-                if(entity != null)
-                {
-                    entity.IsDeleted = true;
-                    await _contactRepository.UpdateAsync(entity, cancellationToken);
-                    return true;
-                }
-               
+                entity.IsDeleted = true;
+                await _contactRepository.UpdateAsync(entity, cancellationToken);
+                return true;
             }
+
             return false;
         }
 
         public async Task<ContactDto?> GetContactAsync(int id, CancellationToken cancellationToken)
         {
-            var entity = await _contactRepository.FindByIdAsync(id, cancellationToken);
-            var contact = _mapper.Map<ContactDto>(entity);
-            return contact;
+            var entity = id > 0 ? await _contactRepository.FindByIdAsync(id, cancellationToken) : null;
+
+            if(entity != null)
+            {
+                var contact = _mapper.Map<ContactDto>(entity);
+                return contact;
+            }
+
+            return null;
+
         }
 
         public async Task<IEnumerable<ContactDto>> GetContactsAsync(CancellationToken cancellationToken)
@@ -54,8 +58,9 @@ namespace AddressBooking.Application
         {
             if (dto == null)
                 return false;
+
             var entity = _mapper.Map<Contact>(dto);
-            var contact = await _contactRepository.InsertAsync(entity, cancellationToken);
+            await _contactRepository.InsertAsync(entity, cancellationToken);
 
             return true;
         }

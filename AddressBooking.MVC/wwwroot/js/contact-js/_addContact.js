@@ -1,21 +1,32 @@
-﻿//
-function AddContact() {
-    var form = $("#contactForm");
-    var actionUrl = "https://localhost:44382/api/Contact/AddContact";
-
-    $.ajax({
-        url: actionUrl,
-        type: "POST",
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        data: form.serialize(),
-        success: function (data, textstatus, jqXHR) {
-            console.log(data);
-            $("#addContactModal").hide();
-            location.reload();
-        },
-        error: function (jqXHR, textstatus, exception) {
-            console.log(exception);
+﻿
+$(function () {
+    $("#btnSubmit").click(function () {
+        if ($("#contactForm").valid()) {
+            $('#contactForm').submit();
+        }
+        else {
+            return false;
         }
     });
-}
 
+    $("#contactForm").on("submit", function (event) {
+        event.preventDefault();
+        var form = $("#contactForm");
+        var actionUrl = "https://localhost:44382/api/Contact/AddContact";
+
+        $.ajax({
+            type: "POST",
+            url: actionUrl,
+            data: form.serialize(),
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            success: function (data, response) {
+                console.log(data);
+                $("#addContactModal").hide();
+                location.reload();
+            },
+            error: function (jqXHR, textstatus, exception) {
+                console.log(exception);
+            }
+        });
+    });
+})

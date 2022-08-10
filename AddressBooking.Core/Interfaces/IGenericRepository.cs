@@ -8,12 +8,35 @@ namespace AddressBooking.Core
 {
     public interface IGenericRepository<T>
     {
+        /// <summary>
+        /// find all entities
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         Task<IEnumerable<T?>> FindAllAsync(CancellationToken cancellationToken);
 
+        /// <summary>
+        /// find entity by id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         Task<T?> FindByIdAsync(int id, CancellationToken cancellationToken);
 
+        /// <summary>
+        /// Update entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken);
 
+        /// <summary>
+        /// Insert entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         Task<T> InsertAsync(T entity, CancellationToken cancellationToken);
     }
 }

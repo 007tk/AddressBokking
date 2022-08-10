@@ -1,5 +1,5 @@
-﻿@using AddressBooking.Presentation.Models
-@model Contact
+﻿@using AddressBooking.Application
+@model ContactDto
 @{
 }
 <!-- Modal -->
@@ -13,31 +13,53 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div asp-validation-summary="All"></div>
                 <form method="post" id="contactForm">
                     <div class="form-group">
                         <label asp-for="ContactName"></label>
                         <input class="form-control" asp-for="ContactName" placeholder="Enter contact name">
+                        <span asp-validation-for="ContactName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="ContactSurname"></label>
                         <input class="form-control" asp-for="ContactSurname" placeholder="Enter contact surname">
+                        <span asp-validation-for="ContactSurname" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="ContactNumber"></label>
                         <input class="form-control" asp-for="ContactNumber" placeholder="Enter contact number">
+                        <span asp-validation-for="ContactNumber" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Email"></label>
-                        <input class="form-control" asp-for="Email" placeholder="Enter email">
+                        <label asp-for="Age"></label>
+                        <input class="form-control" asp-for="Age" placeholder="Enter age">
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DateOfBirth"></label>
+                        <input class="form-control" asp-for="DateOfBirth" placeholder="Enter age">
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address"></label>
+                        <input class="form-control" asp-for="Address" placeholder="Enter age">
+                        <span asp-validation-for="Address" class="text-danger"></span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="AddContact()">Add Contact</button>
+                        <button type="button" class="btn btn-primary" id="btnSubmit">Add Contact</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<script src="~/js/contact-js/_addContact.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+    <script src="~/js/contact-js/_addContact.js"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtpYxhR8t30o6Xulo2YCU2H8xMlTjD_EM&libraries=places&callback=initMap"></script>
+
 
