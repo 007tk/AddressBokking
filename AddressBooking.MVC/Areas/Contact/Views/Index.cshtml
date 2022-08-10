@@ -9,7 +9,7 @@
     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#uploadContactsModal">Upload Contacts</button>
 </div>
 <partial name="_AddContact">
-<partial name="_UploadContacts" />
+    <partial name="_UploadContacts" />
     <div id="contacts">
         <table id="contactTable">
             <thead>
@@ -26,8 +26,16 @@
             </thead>
         </table>
     </div>
+    <div class="form-group">
+        <button type="button" id="exportButton" class="btn btn-secondary">Export TO CSV</button>
+    </div>
     <script type="text/javascript">
-
+        $(document).ready(function() {
+            document.getElementById("exportButton").addEventListener("click", function() {
+                var html = document.querySelector("table").outerHTML;
+                htmlToCSV(html, "students.csv");
+            });
+        });
         // Load contact data table
         $('#contactTable').DataTable({
             ajax: {
@@ -50,5 +58,7 @@
                 }
             ],
         });
+
+
     </script>
     <script src="~/js/contact-js/index.js"></script>
