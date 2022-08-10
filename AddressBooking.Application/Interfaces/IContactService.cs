@@ -32,6 +32,14 @@ namespace AddressBooking.Application
         Task<bool> InsertContactAsync(ContactDto dto, CancellationToken cancellationToken);
 
         /// <summary>
+        /// Search duplicate contact entry. 
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<bool> SearchDuplicate(ContactDto dto, CancellationToken cancellationToken);
+
+        /// <summary>
         /// Update contact.
         /// </summary>
         /// <param name="dto"></param>
@@ -46,5 +54,13 @@ namespace AddressBooking.Application
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<bool> DeleteContactAsync(int id, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Merge Contact.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<bool> MergeContact(ContactDto dto, CancellationToken cancellationToken);
     }
 }

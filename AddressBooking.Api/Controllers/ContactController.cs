@@ -2,6 +2,7 @@
 using AddressBooking.Application;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,16 +20,19 @@ namespace AddressBooking.Api.Controllers
         }
 
         [HttpPost]
-        [IgnoreAntiforgeryToken]
         [Route(nameof(AddContact))]
         public async Task<IActionResult> AddContact([FromForm] ContactDto dto, CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            var duplicateDetected =  await _contactService.SearchDuplicate(dto, cancellationToken);
+            if(duplicateDetected)
+                return Ok("Found duplicate.");
+
             await _contactService.InsertContactAsync(dto, cancellationToken);
 
-            return Ok();
+            return Ok("Contact Inserted");
         }
 
         [HttpGet]
@@ -60,6 +64,17 @@ namespace AddressBooking.Api.Controllers
         {
             var contacts = await _contactService.GetContactsAsync(cancellationToken);
             return contacts;
+        }
+
+        [HttpPost]
+        [Route(nameof(MergeContact))]
+        public async Task<IActionResult> MergeContact(ContactDto dto, CancellationToken cancellationToken)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var results = await _contactService.MergeContact(dto, cancellationToken);
+            return Ok(results);
         }
 
         [HttpPost]

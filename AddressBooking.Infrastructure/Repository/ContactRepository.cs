@@ -17,6 +17,14 @@ namespace AddressBooking.Infrastructure.Repository
             _dbContext = dbContext;
         }
 
+        public IQueryable<Contact> Query
+        {
+            get
+            {
+                return _dbContext.Set<Contact>();
+            }
+        }
+
         public async Task<IEnumerable<Contact?>> FindAllAsync(CancellationToken cancellationToken)
         {
             var contacts = await _dbContext.Contacts.ToListAsync(cancellationToken);

@@ -9,6 +9,6 @@ namespace AddressBooking.Core
 {
     public interface IContactRepository : IGenericRepository<Contact>
     {
-
+        public IQueryable<Contact> Query { get; }
     }
 }

@@ -58,11 +58,40 @@ namespace AddressBooking.Application
         {
             if (dto == null)
                 return false;
-
-            var entity = _mapper.Map<Contact>(dto);
-            await _contactRepository.InsertAsync(entity, cancellationToken);
+                
+           var entity = _mapper.Map<Contact>(dto);
+           await _contactRepository.InsertAsync(entity, cancellationToken);
 
             return true;
+        }
+
+        public async Task<bool> MergeContact(ContactDto dto, CancellationToken cancellationToken)
+        {
+            var contactInDb = _contactRepository.Query.Where(c => c.ContactName == dto.ContactName && c.ContactSurname == dto.ContactSurname).FirstOrDefault();
+            if (contactInDb != null)
+                return false;
+
+            // Update fields
+            contactInDb.ContactName = dto.ContactName;
+            contactInDb.ContactSurname = dto.ContactSurname;
+            contactInDb.ContactNumber = dto.ContactNumber;
+            contactInDb.Address = dto.Address;
+            contactInDb.DateOfBirth = dto.DateOfBirth;
+            contactInDb.Age = dto.Age;
+
+            var duplicate = _mapper.Map<Contact>(contactInDb);
+            await _contactRepository.UpdateAsync(duplicate, cancellationToken);
+            return true;
+        }
+
+        public async Task<bool> SearchDuplicate(ContactDto dto, CancellationToken cancellationToken)
+        {
+            // Search duplicate.
+            var contactInDb = _contactRepository.Query.Where(c => c.ContactName == dto.ContactName && c.ContactSurname == dto.ContactSurname).FirstOrDefault();
+            if (contactInDb != null)
+                return true;
+
+            return false;
         }
 
         public async Task<bool> UpdateContactAsync(ContactDto dto, CancellationToken cancellationToken)

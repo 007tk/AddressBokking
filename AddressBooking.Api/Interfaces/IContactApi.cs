@@ -41,11 +41,19 @@ namespace AddressBooking.Api.Interfaces
         Task<IActionResult> UpdateContact(ContactDto dto, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Dlete contact.
+        /// Delete contact.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<IActionResult> DeleteContact(int id, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Merge contact.
+        /// </summary>
+        /// <param name=""></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<IActionResult> MergeContact(ContactDto dto, CancellationToken cancellationToken);
     }
 }
