@@ -101,5 +101,39 @@ namespace AddressBooking.Application
 
             return contact;
         }
+
+        public async Task<int> UploadContacts(StreamReader csvStreamReader, CancellationToken cancellationToken)
+        {
+            var ContactListModel = new List<CsvContactsDto>();
+            string inputDataRead;
+            var values = new List<string>();
+            while((inputDataRead = csvStreamReader.ReadLine()) != null)
+            {
+                values.Add(inputDataRead.Trim().Replace(" ", "").Replace(",", " "));
+            }
+
+            // Remove Headers in csv
+            values.Remove(values[0]);
+
+            foreach(var value in values)
+            {
+                var contactFromCsv = new CsvContactsDto();
+                var eachColumn = value.Split(' ');
+                contactFromCsv.ContactName = !string.IsNullOrWhiteSpace(eachColumn[1]) ? eachColumn[1] : string.Empty;
+                contactFromCsv.ContactSurname = !string.IsNullOrWhiteSpace(eachColumn[2]) ? eachColumn[2] : string.Empty;
+                contactFromCsv.Age = !string.IsNullOrWhiteSpace(eachColumn[3]) ? int.Parse(eachColumn[3]) : 0;
+                contactFromCsv.DateOfBirth = !string.IsNullOrWhiteSpace(eachColumn[4]) ? DateTime.Parse(eachColumn[4])  : DateTime.UtcNow;
+                contactFromCsv.ContactNumber = !string.IsNullOrWhiteSpace(eachColumn[5]) ? eachColumn[5] : string.Empty;
+                contactFromCsv.Address = !string.IsNullOrWhiteSpace(eachColumn[6]) ? eachColumn[6] : string.Empty;
+
+                ContactListModel.Add(contactFromCsv);
+            }
+
+            var contactsToUpload = _mapper.Map<List<Contact>>(ContactListModel);
+            
+            var uploaded = await _contactRepository.InsertAsync(contactsToUpload, cancellationToken);
+
+            return uploaded;
+        }
     }
 }

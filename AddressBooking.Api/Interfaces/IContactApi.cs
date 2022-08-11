@@ -55,5 +55,12 @@ namespace AddressBooking.Api.Interfaces
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<IActionResult> MergeContact(ContactDto dto, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Upload Contacts from csv file.
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<IActionResult> UploadContacts(CancellationToken cancellationToken);
     }
 }

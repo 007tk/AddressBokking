@@ -8,6 +8,7 @@ namespace AddressBooking.Application
         public MappingProfile()
         {
             CreateMap<ContactDto, Contact>().ReverseMap();
+            CreateMap<Contact, CsvContactsDto>().ReverseMap();
         }
     }
 }

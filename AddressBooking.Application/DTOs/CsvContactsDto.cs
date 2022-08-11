@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AddressBooking.Application.DTOs
+namespace AddressBooking.Application
 {
     public class CsvContactsDto
     {

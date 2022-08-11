@@ -44,6 +44,14 @@ namespace AddressBooking.Infrastructure.Repository
             return contact.Entity;
         }
 
+        public async Task<int> InsertAsync(IEnumerable<Contact> entities, CancellationToken cancellationToken)
+        {
+            await _dbContext.Contacts.AddRangeAsync(entities, cancellationToken);
+            var results = await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return results;
+        }
+
         public async Task<bool> UpdateAsync(Contact entity, CancellationToken cancellationToken)
         {
             var entry = _dbContext.Contacts.Update(entity);

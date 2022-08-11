@@ -3,9 +3,11 @@ using AddressBooking.Application;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AddressBooking.Api.Controllers
 {
@@ -89,5 +91,20 @@ namespace AddressBooking.Api.Controllers
             return Ok(updatedContact);
         }
 
+        [HttpPost]
+        [Route(nameof(UploadContacts))]
+        public async Task<IActionResult> UploadContacts(CancellationToken cancellationToken)
+        {
+            var attachedFile = HttpContext.Request.Form.Files["CsvDoc"];
+            if (attachedFile == null)
+                return new JsonResult(null);
+
+            var csvStreamReader = new StreamReader(attachedFile.OpenReadStream());
+            var uploaded = await _contactService.UploadContacts(csvStreamReader, cancellationToken);
+            if(uploaded > 0)
+                return Ok(uploaded);
+
+            return BadRequest(uploaded);
+        }
     }
 }

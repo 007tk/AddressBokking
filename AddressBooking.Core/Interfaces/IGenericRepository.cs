@@ -32,11 +32,19 @@ namespace AddressBooking.Core
         Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Insert entity.
+        /// Insert entity of type <T>.
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<T> InsertAsync(T entity, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Insert entities of type <T>.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<int> InsertAsync(IEnumerable<T> entity, CancellationToken cancellationToken);
     }
 }

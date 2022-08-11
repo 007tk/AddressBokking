@@ -62,5 +62,13 @@ namespace AddressBooking.Application
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<bool> MergeContact(ContactDto dto, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="csvStreamReader"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<int> UploadContacts(StreamReader csvStreamReader, CancellationToken cancellationToken);
     }
 }
