@@ -26,6 +26,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBooking.Api", "AddressBooking.Api\AddressBooking.Api.csproj", "{3564A861-D465-4C79-8F07-119F1F86D44A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Unit Tests", "6. Unit Tests", "{89639840-BF77-4A6C-8F83-CD4BB6FEABE7}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\Tikane Kgoatla\Downloads\demo-tests-data.csv = C:\Users\Tikane Kgoatla\Downloads\demo-tests-data.csv
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBooking.ContactServiceTest", "AddressBooking.Contact.Test\AddressBooking.ContactServiceTest.csproj", "{83176E3C-2920-440A-A9B6-A77992495C6F}"
 EndProject
