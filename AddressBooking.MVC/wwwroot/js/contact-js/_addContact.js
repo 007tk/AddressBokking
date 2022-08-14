@@ -1,5 +1,4 @@
-﻿const { merge } = require("jquery");
-
+﻿
 $(function () {
     $("#btnSubmit").click(function () {
         if ($("#contactForm").valid()) {
